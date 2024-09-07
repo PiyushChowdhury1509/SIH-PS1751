@@ -1,101 +1,93 @@
-import Image from "next/image";
+'use client'
+import React from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function Home() {
+function PostOfficeDashboard() {
+  const router=useRouter()
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      <nav className="bg-blue-600 text-white p-4 flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Post Office Dashboard</h1>
+        <div className="flex items-center">
+          <span className="mr-4">Welcome, User</span>
+          <button className="bg-red-500 px-4 py-2 rounded">Logout</button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </nav>
+      <div className="flex flex-1">
+        <aside className="bg-gray-200 w-64 p-4">
+          <ul>
+            <li className="mb-2">
+              <a href="#dashboard" className="block p-2 bg-blue-600 text-white rounded">Dashboard</a>
+            </li>
+            <li className="mb-2">
+              <a href="#compliance" className="block p-2 bg-blue-600 text-white rounded">Compliance</a>
+            </li>
+            <li className="mb-2">
+              <a onClick={()=>router.push('/staffAlerts')} href="#alerts" className="block p-2 bg-blue-600 text-white rounded">Alerts</a>
+            </li>
+            <li className="mb-2">
+              <a onClick={()=>router.push('/staffReports')} href="#reports" className="block p-2 bg-blue-600 text-white rounded">Reports</a>
+            </li>
+          </ul>
+        </aside>
+        <main className="flex-1 p-4">
+          <section id="dashboard" className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">Dashboard Overview</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-white p-4 rounded shadow">
+                <h3 className="text-xl font-semibold mb-2">Compliance</h3>
+                <p>80% Completed</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow">
+                <h3 className="text-xl font-semibold mb-2">Alerts</h3>
+                <p>5 Active Alerts</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow">
+                <h3 className="text-xl font-semibold mb-2">Reports</h3>
+                <p>10 Pending Reports</p>
+              </div>
+            </div>
+          </section>
+          <section id="compliance" className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">Compliance</h2>
+            <div className="bg-white p-4 rounded shadow mb-6">
+              <h3 className="text-xl font-semibold mb-2">Compliance Status</h3>
+              <p>80% Completed</p>
+              <p>20 Non-compliant Instances</p>
+            </div>
+            <div className="bg-white p-4 rounded shadow mb-6">
+              <h3 className="text-xl font-semibold mb-2">Compliance Activities</h3>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Regular Cleaning</li>
+                <li>Waste Segregation</li>
+                <li>Energy Conservation</li>
+                <li>Water Conservation</li>
+                <li>Green Initiatives</li>
+              </ul>
+            </div>
+            <div className="bg-white p-4 rounded shadow">
+              <h3 className="text-xl font-semibold mb-2">Activity Status</h3>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Regular Cleaning: <span className="text-green-500">Completed</span></li>
+                <li>Waste Segregation: <span className="text-yellow-500">In Progress</span></li>
+                <li>Energy Conservation: <span className="text-red-500">Not Started</span></li>
+                <li>Water Conservation: <span className="text-green-500">Completed</span></li>
+                <li>Green Initiatives: <span className="text-yellow-500">In Progress</span></li>
+              </ul>
+            </div>
+          </section>
+          <section id="alerts" className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">Alerts</h2>
+            <p>Active alerts and notifications will be displayed here.</p>
+          </section>
+          <section id="reports">
+            <h2 className="text-2xl font-bold mb-4">Reports</h2>
+            <p>Reports submitted by staff will be displayed here.</p>
+          </section>
+        </main>
+      </div>
     </div>
   );
 }
+
+export default PostOfficeDashboard;
