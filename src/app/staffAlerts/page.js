@@ -25,7 +25,6 @@ function StaffAlertsSection() {
         { date: "2024-09-05", comment: "Order placed for lighting." }
       ]
     },
-    // Add more alerts as needed
   ]);
 
   const handleStatusUpdate = (alertId, newStatus, comment) => {
